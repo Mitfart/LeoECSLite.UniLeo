@@ -1,0 +1,20 @@
+{
+  "name": "com.mitfart.leoecslite.unileo",
+  "author": "Mitfart",
+  "displayName": "LeoECS Lite UniLeo",
+  "description": "LeoECS Lite - Интеграция содержащая средства конвертации GameObject-ов в Entity",
+  "unity": "2020.3",
+  "version": "2023.01.4",
+  "keywords": [
+    "leoecslite",
+    "leoecs",
+    "ecs",
+    "unity",
+    "integration"
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mitfart/LeoECSLite.UniLeo.git"
+  }
+}
