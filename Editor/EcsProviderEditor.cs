@@ -1,11 +1,10 @@
-using Mitfart.LeoECSLite.UniLeo.LeoECSLite.UniLeo.Runtime.Providers;
-using UniLeo_Lite.Editor;
+using Mitfart.LeoECSLite.UniLeo.Providers;
 using UnityEditor;
 
-namespace Mitfart.LeoECSLite.UniLeo.Editor.LeoECSLite.UniLeo.Editor{
+namespace Mitfart.LeoECSLite.UniLeo.Editor{
    [CanEditMultipleObjects]
    [CustomEditor(typeof(EcsProvider<>), true)]
-   public class MonoProviderEditor : UnityEditor.Editor{
+   public class EcsProviderEditor : UnityEditor.Editor{
       public override void OnInspectorGUI(){
          serializedObject.DrawScriptProperty();
          serializedObject.FindProperty("component")?.Draw(true, 1);

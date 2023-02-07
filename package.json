@@ -2,8 +2,8 @@
   "name": "com.mitfart.leoecslite.unileo",
   "author": "Mitfart",
   "displayName": "LeoECS Lite UniLeo",
-  "description": "LeoECS Lite - Интеграция содержащая средства конвертации GameObject-ов в Entity",
-  "unity": "2020.3",
+  "description": "LeoECS Lite - Интеграция содержащая средства конвертации GameObject в Entity",
+  "unity": "2021.3",
   "version": "2023.01.4",
   "keywords": [
     "leoecslite",

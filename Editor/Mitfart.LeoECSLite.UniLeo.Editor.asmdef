@@ -1,9 +1,8 @@
 {
   "name": "Mitfart.LeoECSLite.UniLeo.Editor",
-  "rootNamespace": "Mitfart.LeoECSLite.UniLeo.Editor",
+  "rootNamespace": "Mitfart",
   "references": [
     "Leopotam.EcsLite",
-    "Mitfart.LeoECSLite.UnityIntegration",
     "Mitfart.LeoECSLite.UniLeo"
   ],
   "includePlatforms": [

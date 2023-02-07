@@ -1,9 +1,8 @@
 {
   "name": "Mitfart.LeoECSLite.UniLeo",
-  "rootNamespace": "Mitfart.LeoECSLite.UniLeo",
+  "rootNamespace": "Mitfart",
   "references": [
-    "Leopotam.EcsLite",
-    "MitfartLeoECSLite.Extensions"
+    "Leopotam.EcsLite"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
