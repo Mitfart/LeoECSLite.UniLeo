@@ -4,7 +4,7 @@ using Object = UnityEngine.Object;
 namespace Mitfart.LeoECSLite.UniLeo {
   public class ConvertSceneSys : IEcsPreInitSystem {
     public void PreInit(IEcsSystems systems) {
-      EcsWorldsLocator.Register(string.Empty, systems.GetWorld());
+      EcsWorldsLocator.Register(null, systems.GetWorld());
       EcsWorldsLocator.RegisterAllFrom(systems);
       
       foreach (var convertable in Object.FindObjectsOfType<ConvertToEntity>()) {

@@ -9,8 +9,15 @@ namespace Mitfart.LeoECSLite.UniLeo{
       
       public static EcsWorld Get(string worldName) {
 #if UNITY_EDITOR
-         if (!Worlds.TryGetValue(worldName, out var world))
+         EcsWorld world;
+
+         if (string.IsNullOrWhiteSpace(worldName)) {
+            if (!Worlds.TryGetValue(string.Empty, out world)) 
+               throw new NoRegisteredWorldException("Default");
+         }
+         else if (!Worlds.TryGetValue(worldName, out world)) 
             throw new NoRegisteredWorldException(worldName);
+         
          return world;
 #else
          Worlds[worldName];
