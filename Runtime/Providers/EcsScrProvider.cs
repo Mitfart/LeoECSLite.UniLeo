@@ -10,7 +10,7 @@ namespace Mitfart.LeoECSLite.UniLeo.Providers{
          EcsPool<TComponent> pool = world.GetPool<TComponent>();
          
          if (pool.Has(e)) pool.Del(e);
-         pool.Add(e) = scrComponent.Value;
+         pool.Add(e) = scrComponent.GetComponent();
 
          Destroy(this);
       }
