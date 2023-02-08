@@ -12,15 +12,11 @@ namespace Mitfart.LeoECSLite.UniLeo{
 
       
 
-    private void Start() {
-      Convert();
-    }
+    protected virtual void Start() => Convert();
 
-
-
-    public EcsPackedEntity Convert() => Convert(EcsWorldsLocator.Get(WorldName));
+    public virtual EcsPackedEntity Convert() => Convert(EcsWorldsLocator.Get(WorldName));
       
-    public EcsPackedEntity Convert(EcsWorld world) {
+    public virtual EcsPackedEntity Convert(EcsWorld world) {
       if (IsConverted) return PackedEntity;
 
       World = world;
@@ -42,7 +38,7 @@ namespace Mitfart.LeoECSLite.UniLeo{
 
 
 
-    private void OnValidate() {
+    protected virtual void OnValidate() {
       if (string.IsNullOrWhiteSpace(WorldName)) 
         WorldName = string.Empty;
     }
