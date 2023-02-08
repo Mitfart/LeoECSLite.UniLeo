@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Mitfart.LeoECSLite.UniLeo{
    [DisallowMultipleComponent]
    public class ConvertToEntity : MonoBehaviour{
-      public string worldName;
+      [field: SerializeField] public string WorldName { get; private set; }
       
       public EcsWorld        World       { get; private set; }
       public EcsPackedEntity PackedEntity{ get; private set; }
@@ -13,26 +13,22 @@ namespace Mitfart.LeoECSLite.UniLeo{
       
 
       private void Start() {
-         Convert(EcsWorldsLocator.Get(worldName));
+         Convert(EcsWorldsLocator.Get(WorldName));
       }
 
-      
-      
-      public EcsPackedEntity Convert(EcsWorld world){
-         World = world;
-         Convert();
-         return PackedEntity;
-      }
-      
-      private void Convert(){
-         if (IsConverted) return;
 
-         var entity = World.NewEntity();
+
+      public EcsPackedEntity Convert() => Convert(World);
+      
+      public EcsPackedEntity Convert(EcsWorld world) {
+         if (IsConverted) return PackedEntity;
+
+         var entity = world.NewEntity();
          foreach (var provider in GetComponents<IConvertToEntity>()) 
-            provider.Convert(entity, World);
+            provider.Convert(entity, world);
 
-         IsConverted  = true;
-         PackedEntity = World.PackEntity(entity);
+         IsConverted = true;
+         return PackedEntity = world.PackEntity(entity);
       }
       
       

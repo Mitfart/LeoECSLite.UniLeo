@@ -8,7 +8,7 @@ namespace Mitfart.LeoECSLite.UniLeo {
       EcsWorldsLocator.RegisterAllFrom(systems);
       
       foreach (var convertable in Object.FindObjectsOfType<ConvertToEntity>()) {
-        var world = systems.GetWorld(convertable.worldName);
+        var world = systems.GetWorld(convertable.WorldName);
         convertable.Convert(world);
       }
     }
