@@ -6,9 +6,9 @@ namespace Mitfart.LeoECSLite.UniLeo{
    public class ConvertToEntity : MonoBehaviour{
       [field: SerializeField] public string WorldName { get; private set; }
       
-      public EcsWorld        World       { get; private set; }
-      public EcsPackedEntity PackedEntity{ get; private set; }
-      public bool            IsConverted { get; private set; }
+      public EcsWorld        World        { get; private set; }
+      public EcsPackedEntity PackedEntity { get; private set; }
+      public bool            IsConverted  { get; private set; }
 
       
 
@@ -35,6 +35,13 @@ namespace Mitfart.LeoECSLite.UniLeo{
       
       public bool TryGetEntity(out int e){
          return PackedEntity.Unpack(World, out e);
+      }
+
+
+
+      private void OnValidate() {
+         if (string.IsNullOrWhiteSpace(WorldName)) 
+            WorldName = string.Empty;
       }
    }
 }
