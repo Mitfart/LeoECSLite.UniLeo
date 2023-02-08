@@ -4,6 +4,6 @@ namespace Mitfart.LeoECSLite.UniLeo.Providers{
    public abstract class ScrComponent<TComponent> : ScriptableObject where TComponent : struct {
       [field: SerializeField] protected TComponent value;
 
-      public abstract TComponent GetComponent();
+      public virtual TComponent GetComponent() => value;
    }
 }
