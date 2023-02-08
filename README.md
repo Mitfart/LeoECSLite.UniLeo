@@ -1,6 +1,9 @@
 # UniLeo - Интеграция в редактор Unity для LeoECS Lite
 Интеграция в редактор Unity для конвертации Unity в ECS
 
+Интеграция вдохновлена [UniLeo-Lite от Voody](https://github.com/Mitfart/UniLeo-Lite)
+
+
 
 # Содержание
 * [Социальные ресурсы](#Социальные-ресурсы)
