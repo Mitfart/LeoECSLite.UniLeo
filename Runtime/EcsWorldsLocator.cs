@@ -17,7 +17,7 @@ namespace Mitfart.LeoECSLite.UniLeo{
          
          return world;
 #else
-         Worlds[worldName];
+         return Worlds[worldName];
 #endif
       }
       
