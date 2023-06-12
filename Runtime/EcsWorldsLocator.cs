@@ -8,17 +8,16 @@ namespace Mitfart.LeoECSLite.UniLeo{
       
       
       public static EcsWorld Get(string worldName) {
-#if UNITY_EDITOR
          if (string.IsNullOrWhiteSpace(worldName)) 
             worldName = string.Empty;
          
-         if (!Worlds.TryGetValue(worldName, out var world)) 
+#if UNITY_EDITOR
+         if (!Worlds.TryGetValue(worldName, out EcsWorld world)) 
             throw new NoRegisteredWorldException(worldName);
-         
+
          return world;
-#else
-         return Worlds[worldName];
 #endif
+         return Worlds[worldName];
       }
       
       public static void Register(string worldName, EcsWorld world) {
@@ -31,7 +30,7 @@ namespace Mitfart.LeoECSLite.UniLeo{
 
 
       public static void RegisterAllFrom(IEcsSystems systems) {
-         foreach (var (name, world) in systems.GetAllNamedWorlds())
+         foreach ((string name, EcsWorld world) in systems.GetAllNamedWorlds())
             Register(name, world);
       }
    }
