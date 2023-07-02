@@ -26,23 +26,21 @@ namespace Mitfart.LeoECSLite.UniLeo {
          if (IsConverted)
             return this;
 
-         World  = world;
-         Entity = World.NewEntity();
+         World           = world;
+         Entity          = World.NewEntity();
+         Packed          = World.PackEntity(Entity);
+         PackedWithWorld = World.PackEntityWithWorld(Entity);
+         IsConverted     = true;
 
          AddComponents();
-
-         IsConverted     = true;
-         Packed          = World.PackEntity(Entity);
-         PackedWithWorld = world.PackEntityWithWorld(Entity);
          return this;
       }
 
 
 
       private void AddComponents() {
-         foreach (IEcsProvider provider in GetComponents<IEcsProvider>()) {
+         foreach (IEcsProvider provider in GetComponents<IEcsProvider>())
             provider.Convert(Entity, World);
-         }
       }
    }
 }
