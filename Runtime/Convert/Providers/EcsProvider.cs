@@ -1,17 +1,14 @@
 using Leopotam.EcsLite;
 
-namespace Mitfart.Plugins.Mitfart.LeoECSLite.UniLeo.Convert.Providers {
-  public abstract class EcsProvider<TComponent> : BaseEcsProvider where TComponent : struct {
-    public TComponent component;
+namespace Mitfart.LeoECSLite.UniLeo.Providers {
+   public abstract class EcsProvider<TComponent> : BaseEcsProvider<TComponent> where TComponent : struct {
+      public TComponent component;
 
-    public override void Convert(int e, EcsWorld world) {
-      EcsPool<TComponent> pool = world.GetPool<TComponent>();
+      protected override void Add(EcsPool<TComponent> pool, int e, EcsWorld world) {
+         if (pool.Has(e))
+            pool.Del(e);
 
-      if (pool.Has(e))
-        pool.Del(e);
-      pool.Add(e) = component;
-
-      Destroy(this);
-    }
-  }
+         pool.Add(e) = component;
+      }
+   }
 }

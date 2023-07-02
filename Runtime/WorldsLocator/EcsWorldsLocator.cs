@@ -1,38 +1,39 @@
 using System.Collections.Generic;
 using Leopotam.EcsLite;
+using Mitfart.LeoECSLite.UniLeo.Extensions.String;
 
-namespace Mitfart.Plugins.Mitfart.LeoECSLite.UniLeo.WorldsLocator {
-  public static class EcsWorldsLocator {
-    private static readonly Dictionary<string, EcsWorld> Worlds = new();
+namespace Mitfart.LeoECSLite.UniLeo {
+   public static class EcsWorldsLocator {
+      private static readonly Dictionary<string, EcsWorld> _Worlds = new();
 
 
 
-    public static EcsWorld Get(string worldName) {
+      public static EcsWorld Get(string worldName) {
+         worldName = worldName.AsValidWorldName();
+
 #if UNITY_EDITOR
-      if (string.IsNullOrWhiteSpace(worldName))
-        worldName = string.Empty;
-
-      if (!Worlds.TryGetValue(worldName, out EcsWorld world))
-        throw new NoRegisteredWorldException(worldName);
-
-      return world;
-#else
-         return Worlds[worldName];
+         if (!_Worlds.ContainsKey(worldName))
+            throw new NoRegisteredWorldException(worldName);
 #endif
-    }
 
-    public static void Register(string worldName, EcsWorld world) {
-      if (string.IsNullOrWhiteSpace(worldName))
-        worldName = string.Empty;
+         return _Worlds[worldName];
+      }
 
-      Worlds[worldName] = world;
-    }
+      public static void Register(string worldName, EcsWorld world) {
+         if (string.IsNullOrWhiteSpace(worldName))
+            worldName = string.Empty;
+
+         _Worlds[worldName] = world;
+      }
 
 
 
-    public static void RegisterAllFrom(IEcsSystems systems) {
-      foreach ((string name, EcsWorld world) in systems.GetAllNamedWorlds())
-        Register(name, world);
-    }
-  }
+      public static void RegisterAllFrom(IEcsSystems systems) {
+         Register(worldName: null, systems.GetWorld());
+
+         foreach ((string name, EcsWorld world) in systems.GetAllNamedWorlds()) {
+            Register(name, world);
+         }
+      }
+   }
 }
