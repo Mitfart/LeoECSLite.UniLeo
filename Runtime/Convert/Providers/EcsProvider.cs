@@ -10,5 +10,7 @@ namespace Mitfart.LeoECSLite.UniLeo.Providers {
 
          pool.Add(e) = component;
       }
+      
+      public static implicit operator TComponent(EcsProvider<TComponent> provider) => provider.component;
    }
 }
